@@ -34,9 +34,14 @@ namespace BackgroundServiceExample.Controllers
         [HttpPost("StopBackgroundService")]
         public async Task<IActionResult> StopBackgroundService()
         {
-            await _backgroundService.StopAsync(_cancellationTokenSource.Token);
-            _logger.LogInformation("BG service has been STOPPED!");
+            _cancellationTokenSource.Cancel();
 
+            await _backgroundService.StopAsync(_cancellationTokenSource.Token);
+
+            //create a new cancellation token source for future requests
+            _cancellationTokenSource = new CancellationTokenSource();
+
+            _logger.LogInformation("BG service has been STOPPED!");
             return Ok();
         }
 
