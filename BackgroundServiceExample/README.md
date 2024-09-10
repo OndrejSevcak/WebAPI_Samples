@@ -17,6 +17,5 @@ So the API can have 4 states:
 <ul>
   <li>Backround service is running, but the execution of contained service is disabled</li>
   <li>Backround service is running and execution of contained service is enabled</li>
-  <li>Backround service is stopped using StopAsync()</li>
-  <li>Backround service is started using StartAsync()</li>
+  <li>Backround service is not running</li>
 </ul>
